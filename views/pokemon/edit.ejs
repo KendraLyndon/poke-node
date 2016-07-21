@@ -5,7 +5,7 @@
 <h1>Edit <%= poke.name %></h1>
 
 <form action='/pokemon/<%= poke.id %>' method='POST'>
-  Name : <input type='text' name='name' placeholder='<%= poke.name %>'/>
+  Name : <input type='text' name='name' value='<%= poke.name %>'/>
   Trainer : <select name='trainer'>
     <% for(var i=0; i<trainers.length; i++){ %>
       <option value='<%= trainers[i].name %>'
@@ -16,6 +16,6 @@
       </option>
     <% } %>
   </select>
-  Combat Power : <input type='number' name='cp' placeholder='<%= poke.cp %>'/>
+  Combat Power : <input type='number' name='cp' value='<%= poke.cp %>'/>
   <input type='submit' value='edit' />
 </form>
