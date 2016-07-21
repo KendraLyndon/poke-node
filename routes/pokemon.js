@@ -54,5 +54,11 @@ router.get('/:id/edit', function(req, res, next) {
   })
 });
 
+router.get('/:id/delete', function(req, res, next) {
+  Pokemon().delete().where({id:req.params.id}).then(function(poke){
+    res.redirect('/pokemon');
+  })
+});
+
 
 module.exports = router;

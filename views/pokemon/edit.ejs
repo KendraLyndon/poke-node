@@ -2,7 +2,7 @@
 <!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
 <%- contentFor('body') %>
 
-<span style="color:white">Edit <%= poke.name %></span>
+<h1>Edit <%= poke.name %></h1>
 
 <form action='/pokemon/<%= poke.id %>' method='POST'>
   Name : <input type='text' name='name' placeholder='<%= poke.name %>'/>
