@@ -1,0 +1,18 @@
+<!-- DO NOT TOUCH LINE 3 ! This imports our HTML layout-->
+<!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
+<%- contentFor('body') %>
+
+<span style="color:white">Pokemón home page.</span>
+
+<h1><%= poke.name %></h1>
+<h2>Trainer : <%= trainer.name %></h2>
+<h2>Combat Points : <%= poke.cp %></h2>
+
+<button type="button" name="button" id="add_new">+ Add New Pokemon</button>
+
+<script type="text/javascript">
+   var btn = document.getElementById("add_new");
+   btn.addEventListener("click", function(){
+     window.location.href = '/pokemon/new';
+   })
+</script>

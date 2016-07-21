@@ -23,7 +23,7 @@
       <% for(var i=0; i<pokemon.length; i++){ %>
         <tr>
           <td>
-            <%= pokemon[i].name %>
+            <a href='/pokemon/<%= pokemon[i].id %>'><%= pokemon[i].name %></a>
           </td>
           <td>
             <%= pokemon[i].trainer_id %>
