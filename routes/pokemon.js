@@ -73,7 +73,7 @@ router.get('/:id/assign', function(req, res, next) {
 
 router.post('/assign/:player', function(req, res, next) {
   res.cookie(req.params.player,req.body.player);
-  res.redirect('/pokemon');
+  res.redirect('/gym');
 });
 
 router.get('/:id/remove/:player', function(req, res, next) {
