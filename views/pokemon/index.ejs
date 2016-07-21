@@ -34,6 +34,13 @@
           <td>
             <a href='/pokemon/<%=pokemon[i].id%>/edit'>Edit</a>
             <a href='/pokemon/<%=pokemon[i].id%>/delete'>Delete</a>
+            <% if(pokemon[i].id === p1){ %>
+              <a href='/pokemon/<%=pokemon[i].id%>/remove/p1'>Remove from Gym</a>
+            <% } else if(pokemon[i].id === p2){ %>
+              <a href='/pokemon/<%=pokemon[i].id%>/remove/p2'>Remove from Gym</a>
+            <% } else if(!(p1 && p2)){ %>
+              <a href='/pokemon/<%=pokemon[i].id%>/assign'>Assign to Gym</a>
+            <% } %>
           </td>
         </tr>
       <% } %>

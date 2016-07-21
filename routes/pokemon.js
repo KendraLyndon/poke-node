@@ -11,8 +11,10 @@ function Trainers(){
 }
 
 router.get('/', function(req, res, next) {
+  var p1 = Number(req.cookies.p1);
+  var p2 = Number(req.cookies.p2);
   Pokemon().select().then(function(pokemon){
-    res.render('pokemon/index',{pokemon:pokemon})
+    res.render('pokemon/index',{pokemon:pokemon, p1:p1, p2:p2})
   })
 });
 
@@ -58,6 +60,20 @@ router.get('/:id/delete', function(req, res, next) {
   Pokemon().delete().where({id:req.params.id}).then(function(poke){
     res.redirect('/pokemon');
   })
+});
+
+router.get('/:id/assign', function(req, res, next) {
+  if(!req.cookies.p1){
+    res.cookie('p1',req.params.id);
+  } else {
+    res.cookie('p2',req.params.id);
+  }
+  res.redirect('/pokemon');
+});
+
+router.get('/:id/remove/:player', function(req, res, next) {
+  res.clearCookie(req.params.player);
+  res.redirect('/pokemon');
 });
 
 
