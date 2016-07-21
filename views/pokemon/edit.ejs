@@ -1,0 +1,21 @@
+<!-- DO NOT TOUCH LINE 3 ! This imports our HTML layout-->
+<!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
+<%- contentFor('body') %>
+
+<span style="color:white">Edit <%= poke.name %></span>
+
+<form action='/pokemon' method='POST'>
+  Name : <input type='text' name='name' placeholder='<%= poke.name %>'/>
+  Trainer : <select name='trainer'>
+    <% for(var i=0; i<trainers.length; i++){ %>
+      <option value='<%= trainers[i].name %>'
+        <% if(trainers[i].id === poke.trainer_id) { %>
+          selected
+        <% }%> >
+        <%= trainers[i].name %>
+      </option>
+    <% } %>
+  </select>
+  Combat Power : <input type='number' name='cp' placeholder='<%= poke.cp %>'/>
+  <input type='submit' value='edit' />
+</form>

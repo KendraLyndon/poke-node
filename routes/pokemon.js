@@ -6,7 +6,7 @@ function Pokemon(){
   return knex('pokemon');
 }
 
-function Trainer(){
+function Trainers(){
   return knex('trainers');
 }
 
@@ -28,8 +28,25 @@ router.get('/new', function(req, res, next) {
 
 router.get('/:id', function(req, res, next) {
   Pokemon().where({id:req.params.id}).then(function(poke){
-    Trainer().where({id:poke[0].trainer_id}).then(function(trainer){
+    Trainers().where({id:poke[0].trainer_id}).then(function(trainer){
       res.render('pokemon/show',{poke:poke[0], trainer:trainer[0]})
+    })
+  })
+});
+
+router.post('/:id', function(req, res, next) {
+  Pokemon().update({name:req.params.name}).where({id:req.params.id}).then(function(poke){
+    Trainers().where({id:poke[0].trainer_id}).then(function(trainer){
+      res.render('pokemon/show',{poke:poke[0], trainer:trainer[0]})
+    })
+  })
+});
+
+router.get('/:id/edit', function(req, res, next) {
+  Pokemon().where({id:req.params.id}).then(function(poke){
+    Trainers().select().then(function(trainers){
+      console.log(trainers);
+      res.render('pokemon/edit',{poke:poke[0], trainers:trainers})
     })
   })
 });
