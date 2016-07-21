@@ -2,15 +2,37 @@
 <!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
 <%- contentFor('body') %>
 
-<span style="color:white">Trainers home page.</span>
+<h1>Trainers : </h1>
 
-<button type="button" name="button" id="add_new">+ Add New Trainer</button>
-
-<script type="text/javascript">
-   var btn = document.getElementById("add_new");
-   var passedInData = '<%= passedInData %>' ;
-   btn.addEventListener("click", function(){
-     alert("the button works, and we see "+passedInData);
-   })
-
-</script>
+<table>
+  <thead>
+    <th>
+      Trainer
+    </th>
+    <th>
+      Pokemon
+    </th>
+  </thead>
+  <tbody>
+    <% for(var i=0; i<trainers.length; i++){ %>
+      <tr>
+        <td>
+          <%= trainers[i].name %>
+        </td>
+        <td>
+        </td>
+      </tr>
+      <% for(var j=0; j<pokemon.length; j++){ %>
+        <% if(pokemon[j].trainer_id === trainers[i].id){ %>
+        <tr>
+          <td>
+          </td>
+            <td>
+                <%= pokemon[j].name %>
+            </td>
+        </tr>
+        <% } %>
+      <% } %>
+    <% } %>
+  </tbody>
+</table>

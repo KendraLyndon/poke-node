@@ -4,11 +4,11 @@ var knex = require('../db/knex');
 
 function Pokemon(){
   return knex('pokemon');
-}
+};
 
 function Trainers(){
   return knex('trainers');
-}
+};
 
 router.get('/', function(req, res, next) {
   var p1 = Number(req.cookies.p1);
