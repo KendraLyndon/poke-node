@@ -35,9 +35,13 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/:id', function(req, res, next) {
-  Pokemon().update({name:req.params.name}).where({id:req.params.id}).then(function(poke){
-    Trainers().where({id:poke[0].trainer_id}).then(function(trainer){
-      res.render('pokemon/show',{poke:poke[0], trainer:trainer[0]})
+  Trainers().where({name:req.body.trainer}).then(function(trainer){
+    Pokemon().update({
+      name:req.body.name,
+      trainer_id:Number(trainer[0].id),
+      cp:Number(req.body.cp)
+    }).where({id:req.params.id}).then(function(){
+      res.redirect('/pokemon/'+req.params.id);
     })
   })
 });
@@ -45,7 +49,6 @@ router.post('/:id', function(req, res, next) {
 router.get('/:id/edit', function(req, res, next) {
   Pokemon().where({id:req.params.id}).then(function(poke){
     Trainers().select().then(function(trainers){
-      console.log(trainers);
       res.render('pokemon/edit',{poke:poke[0], trainers:trainers})
     })
   })
