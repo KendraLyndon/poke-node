@@ -1,0 +1,24 @@
+<%- contentFor('body') %>
+
+<h1>Gym</h1>
+
+<% if(!p1 && !p2) { %>
+  <form action='/pokemon/assign' method='POST'>
+    Choose Pokemon 1 :
+    <select name='p1'>
+      <% for(var i=0; i<pokemon.length; i++){ %>
+        <option value='<%= pokemon[i].name %>'><%= pokemon[i].name %></option>
+      <% } %>
+    </select>
+    <input type='submit' value='choose p1' />
+  </form>
+  <form action='/pokemon/assign' method='POST'>
+    Choose Pokemon 2 :
+    <select name='p2'>
+      <% for(var i=0; i<pokemon.length; i++){ %>
+        <option value='<%= pokemon[i].name %>'><%= pokemon[i].name %></option>
+      <% } %>
+    </select>
+    <input type='submit' value='choose p2' />
+  </form>
+<% } %>

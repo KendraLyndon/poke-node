@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var trainers = require('./routes/trainers');
 var pokemon = require('./routes/pokemon');
-
+var gym = require('./routes/gym');
 
 var app = express();
 var expressLayouts = require('express-ejs-layouts');
@@ -32,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/trainers', trainers);
 app.use('/pokemon', pokemon);
+app.use('/gym', gym);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
