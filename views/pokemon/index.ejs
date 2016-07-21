@@ -10,9 +10,7 @@
 
 <script type="text/javascript">
    var btn = document.getElementById("add_new");
-   var passedInData = '<%= passedInData %>' ;
    btn.addEventListener("click", function(){
-     alert("the button works, and we see "+passedInData);
+     window.location.href = '/pokemon/new';
    })
-
 </script>

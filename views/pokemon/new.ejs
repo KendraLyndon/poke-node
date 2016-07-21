@@ -1,0 +1,12 @@
+<!-- DO NOT TOUCH LINE 3 ! This imports our HTML layout-->
+<!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
+<%- contentFor('body') %>
+
+<span style="color:white">Pokemón new page.</span>
+
+<form action='/pokemon' method='POST'>
+  Name : <input type='text'/>
+  Trainer Id : <input type='number' />
+  Combat Power : <input type='number' />
+  <input type='submit' value='add pokemon' />
+</form>
