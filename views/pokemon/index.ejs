@@ -4,7 +4,42 @@
 
 <span style="color:white">Pokemón home page.</span>
 
-
+<% if(pokemon) { %>
+  <table>
+    <thead>
+      <th>
+        Name
+      </th>
+      <th>
+        Trainer Id
+      </th>
+      <th>
+        Combat Power
+      </th>
+      <th>
+      </th>
+    </thead>
+    <tbody>
+      <% for(var i=0; i<pokemon.length; i++){ %>
+        <tr>
+          <td>
+            <%= pokemon[i].name %>
+          </td>
+          <td>
+            <%= pokemon[i].trainer_id %>
+          </td>
+          <td>
+            <%= pokemon[i].cp %>
+          </td>
+          <td>
+            <a href='/pokemon/<%=pokemon[i].id%>/edit'>Edit</a>
+            <a href='/pokemon/<%=pokemon[i].id%>/delete'>Delete</a>
+          </td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+<% } %>
 
 <button type="button" name="button" id="add_new">+ Add New Pokemon</button>
 
