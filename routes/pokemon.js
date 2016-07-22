@@ -74,8 +74,8 @@ router.get('/:id/assign', function(req, res, next) {
 });
 
 router.post('/assign/:player', function(req, res, next) {
-  Pokemon().update({in_gym:true}).where({id:req.body.player}).then(function(){
-    res.cookie(req.params.player,req.body.player);
+  Pokemon().update({in_gym:true}).where({id:req.body.playerid}).then(function(){
+    res.cookie(req.params.player,req.body.playerid);
     res.redirect('/gym');
   })
 });
@@ -86,6 +86,5 @@ router.get('/:id/remove/:player', function(req, res, next) {
     res.redirect('/pokemon');
   })
 });
-
 
 module.exports = router;

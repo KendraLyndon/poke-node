@@ -2,37 +2,41 @@
 <!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
 <%- contentFor('body') %>
 
-<h1>Trainers : </h1>
-
-<table>
-  <thead>
-    <th>
-      Trainer
-    </th>
-    <th>
-      Pokemon
-    </th>
-  </thead>
-  <tbody>
-    <% for(var i=0; i<trainers.length; i++){ %>
-      <tr>
-        <td>
-          <a href='/trainers/<%= trainers[i].id %>'><%= trainers[i].name %></a>
-        </td>
-        <td>
-        </td>
-      </tr>
-      <% for(var j=0; j<pokemon.length; j++){ %>
-        <% if(pokemon[j].trainer_id === trainers[i].id){ %>
-        <tr>
-          <td>
-          </td>
+<div id='poke-container'>
+  <h1>Trainers </h1>
+  <div class='transparent' id='trainers-transparent'>
+    <table>
+      <thead>
+        <th>
+          Trainer
+        </th>
+        <th>
+          Pokemon
+        </th>
+      </thead>
+      <tbody>
+        <% for(var i=0; i<trainers.length; i++){ %>
+          <tr>
             <td>
-                <%= pokemon[j].name %>
+              <a href='/trainers/<%= trainers[i].id %>'><%= trainers[i].name %></a>
             </td>
-        </tr>
+            <td>
+            </td>
+          </tr>
+        <% for(var j=0; j<pokemon.length; j++){ %>
+          <% if(pokemon[j].trainer_id === trainers[i].id){ %>
+            <tr>
+              <td>
+              </td>
+              <td>
+                <%= pokemon[j].name %>
+              </td>
+            </tr>
+          <% } %>
         <% } %>
       <% } %>
-    <% } %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+
+  </div>
+</div>

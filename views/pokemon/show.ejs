@@ -2,11 +2,12 @@
 <!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
 <%- contentFor('body') %>
 
-<h1><%= poke.name %></h1>
-<h2>Combat Points : <%= poke.cp %></h2>
-<h2>Trainer : <%= trainer.name %></h2>
-
-<button type="button" name="button" id="edit_poke">Edit</button>
+<div id='show-container'>
+  <h1><%= poke.name %></h1>
+  <h2>Combat Points : <%= poke.cp %></h2>
+  <h2>Trainer : <%= trainer.name %></h2>
+  <button type="button" name="button" id="edit_poke">Edit</button>
+</div>
 
 <script type="text/javascript">
    var btn = document.getElementById("edit_poke");

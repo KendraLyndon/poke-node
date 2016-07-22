@@ -7,51 +7,67 @@
 <% } %>
 
 <div id='pre-battle'>
-  <h2>Pokemon 1 : </h2>
-  <% if(poke1) { %>
-    <h3><%= poke1.name %></h3>
-  <% } else { %>
-    <form action='/pokemon/assign/p1' method='POST'>
-      Choose Pokemon 1 :
-      <select name='player'>
-        <% for(var i=0; i<pokemon.length; i++){ %>
-          <option value='<%= pokemon[i].id %>'><%= pokemon[i].name %></option>
-        <% } %>
-      </select>
-      <input type='submit' value='choose p1' />
-    </form>
-  <% } %>
-
-  <h2>Pokemon 2 : </h2>
-  <% if(poke2 && (p1 !== p2)) { %>
+  <div id='pre-battle-top'>
+    <div id='poke-1'>
+      <h2>Pokemon 1</h2>
+      <% if(poke1) { %>
+        <h3><%= poke1.name %></h3>
+      <% } else { %>
+        <form action='/pokemon/assign/p1' method='POST'>
+          <p class='gym-p'>
+            Choose Pokemon 1 :
+          </p>
+          <select name='playerid'>
+            <% for(var i=0; i<pokemon.length; i++){ %>
+              <option value='<%= pokemon[i].id %>'><%= pokemon[i].name %></option>
+            <% } %>
+          </select>
+          <input type='submit' value='assign' />
+        </form>
+      <% } %>
+    </div>
+    <div id='vs'>
+      <p class='gym-p'>
+        VS
+      </p>
+    </div>
+    <div id='poke-2'>
+      <h2>Pokemon 2</h2>
+      <% if(poke2 && (p1 !== p2)) { %>
         <h3><%= poke2.name %></h3>
-  <% } else { %>
-    <form action='/pokemon/assign/p2' method='POST'>
-      Choose Pokemon 2 :
-      <select name='player'>
-        <% for(var i=0; i<pokemon.length; i++){ %>
-          <option value='<%= pokemon[i].id %>'><%= pokemon[i].name %></option>
+      <% } else { %>
+        <form action='/pokemon/assign/p2' method='POST'>
+          <p class='gym-p'>
+            Choose Pokemon 2 :
+          </p>
+          <select name='playerid'>
+            <% for(var i=0; i<pokemon.length; i++){ %>
+              <option value='<%= pokemon[i].id %>'><%= pokemon[i].name %></option>
+            <% } %>
+          </select>
+          <input type='submit' value='assign' />
+        </form>
+      <% } %>
+    </div>
+  </div>
+  <div id='pre-battle-bottom'>
+    <div id='gym-buttons-container'>
+      <button type='button' class='gym-button' id='reset'>Reset</button>
+      <% if((p1 && p2) && (p1 !== p2)){ %>
+        <button type="button" name="battle" class='gym-button' id='battle'>Battle!</button>
         <% } %>
-      </select>
-      <input type='submit' value='choose p2' />
-    </form>
-  <% } %>
-
-  <button type='button' id='reset'>Reset</button>
-
-  <% if((p1 && p2) && (p1 !== p2)){ %>
-    <button type="button" name="battle" id='battle'>Battle!</button>
-  <% } %>
+    </div>
+  </div>
 </div>
 
 <div id='post-battle'>
   <% if(poke1 && poke2){ %>
     <% if(poke1.cp > poke2.cp){ %>
-      <h2>WINNER!</h2>
-      <h2><%= poke1.name %></h2>
+      <h2 class='gym-winner'>the winner is </h2>
+      <h2 class='gym-winner'><%= poke1.name %>!</h2>
     <% } else if (poke2.cp > poke1.cp) {%>
-      <h2>WINNER!</h2>
-      <h2><%= poke2.name %></h2>
+      <h2 class='gym-winner'>the winner is </h2>
+      <h2 class='gym-winner'><%= poke2.name %>!</h2>
     <% } %>
   <% } %>
 </div>

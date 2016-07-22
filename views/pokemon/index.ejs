@@ -2,38 +2,42 @@
 <!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
 <%- contentFor('body') %>
 
-<h1>All Pokemon : </h1>
-
-<% if(pokemon) { %>
-  <table>
-    <thead>
-      <th>
-        Name
-      </th>
-      <th>
-        Trainer Id
-      </th>
-      <th>
-        Combat Power
-      </th>
-      <th>
-      </th>
-    </thead>
-    <tbody>
-      <% for(var i=0; i<pokemon.length; i++){ %>
-        <tr>
-          <td>
-            <a href='/pokemon/<%= pokemon[i].id %>'><%= pokemon[i].name %></a>
-          </td>
-          <td>
-            <%= pokemon[i].trainer_id %>
-          </td>
-          <td>
-            <%= pokemon[i].cp %>
-          </td>
-          <td>
-            <a href='/pokemon/<%=pokemon[i].id%>/edit'>Edit</a>
-            <a href='/pokemon/<%=pokemon[i].id%>/delete'>Delete</a>
+<div id='poke-container'>
+  <h1>All Pokemon </h1>
+  <div class='transparent'>
+    <table>
+      <thead>
+        <th>
+          Name
+        </th>
+        <th>
+          Trainer Id
+        </th>
+        <th>
+          Combat Power
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+      </thead>
+      <tbody>
+        <% for(var i=0; i<pokemon.length; i++){ %>
+          <tr>
+            <td>
+              <a href='/pokemon/<%= pokemon[i].id %>'><%= pokemon[i].name %></a>
+            </td>
+            <td>
+              <%= pokemon[i].trainer_id %>
+            </td>
+            <td>
+              <%= pokemon[i].cp %>
+            </td>
+            <td class='poke-links'>
+              <a href='/pokemon/<%=pokemon[i].id%>/edit'>Edit</a>
+              <a href='/pokemon/<%=pokemon[i].id%>/delete'>Delete</a>
+            </td>
+            <td>
             <% if(pokemon[i].id === p1){ %>
               <a href='/pokemon/<%=pokemon[i].id%>/remove/p1'>Remove from Gym</a>
             <% } else if(pokemon[i].id === p2){ %>
@@ -41,14 +45,14 @@
             <% } else if(!(p1 && p2)){ %>
               <a href='/pokemon/<%=pokemon[i].id%>/assign'>Assign to Gym</a>
             <% } %>
-          </td>
-        </tr>
-      <% } %>
-    </tbody>
-  </table>
-<% } %>
-
-<button type="button" name="button" id="add_new">+ Add New Pokemon</button>
+            </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+  <button type="button" name="button" id="add_new">Add New Pokemon</button>
+</div>
 
 <script type="text/javascript">
    var btn = document.getElementById("add_new");
