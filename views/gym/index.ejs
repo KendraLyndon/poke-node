@@ -37,6 +37,8 @@
     </form>
   <% } %>
 
+  <button type='button' id='reset'>Reset</button>
+
   <% if((p1 && p2) && (p1 !== p2)){ %>
     <button type="button" name="battle" id='battle'>Battle!</button>
   <% } %>
@@ -57,7 +59,11 @@
   var battle = $('#battle');
   var preBattle = $('#pre-battle');
   var postBattle = $('#post-battle');
+  var button = $('#reset');
   $(postBattle).hide();
+  $(button).on('click',function(){
+    window.location.href = '/gym/clear';
+  });
   $(battle).on('click',function(){
     $(preBattle).hide();
     $(postBattle).show();

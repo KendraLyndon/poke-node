@@ -23,4 +23,10 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/clear', function(req, res, next){
+  res.clearCookie('p1');
+  res.clearCookie('p2');
+  res.redirect('/gym')
+})
+
 module.exports = router;
