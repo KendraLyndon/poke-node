@@ -13,8 +13,15 @@ function Pokemon(){
 router.get('/', function(req, res, next) {
   Trainers().select().then(function(trainers){
     Pokemon().select().then(function(pokemon){
-      console.log(pokemon);
       res.render('trainers/index', {pokemon:pokemon, trainers:trainers});
+    })
+  })
+});
+
+router.get('/:id', function(req, res, next) {
+  Trainers().where({id:req.params.id}).then(function(trainer){
+    Pokemon().where({trainer_id:req.params.id}).then(function(pokemon){
+      res.render('trainers/show',{trainer:trainer[0], pokemon:pokemon});
     })
   })
 });
