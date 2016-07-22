@@ -63,22 +63,28 @@ router.get('/:id/delete', function(req, res, next) {
 });
 
 router.get('/:id/assign', function(req, res, next) {
-  if(!req.cookies.p1){
-    res.cookie('p1',req.params.id);
-  } else {
-    res.cookie('p2',req.params.id);
-  }
-  res.redirect('/pokemon');
+  Pokemon().update({in_gym:true}).where({id:req.params.id}).then(function(){
+    if(!req.cookies.p1){
+      res.cookie('p1',req.params.id);
+    } else {
+      res.cookie('p2',req.params.id);
+    }
+    res.redirect('/pokemon');
+  })
 });
 
 router.post('/assign/:player', function(req, res, next) {
-  res.cookie(req.params.player,req.body.player);
-  res.redirect('/gym');
+  Pokemon().update({in_gym:true}).where({id:req.body.player}).then(function(){
+    res.cookie(req.params.player,req.body.player);
+    res.redirect('/gym');
+  })
 });
 
 router.get('/:id/remove/:player', function(req, res, next) {
-  res.clearCookie(req.params.player);
-  res.redirect('/pokemon');
+  Pokemon().update({in_gym:false}).where({id:req.params.id}).then(function(){
+    res.clearCookie(req.params.player);
+    res.redirect('/pokemon');
+  })
 });
 
 

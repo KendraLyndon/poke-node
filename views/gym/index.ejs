@@ -47,9 +47,11 @@
 <div id='post-battle'>
   <% if(poke1 && poke2){ %>
     <% if(poke1.cp > poke2.cp){ %>
-      <h2>WINNER! <%= poke1.name %></h2>
-    <% } else if(poke2.cp > poke1.cp) {%>
-      <h2>WINNER! <% poke2.name %></h2>
+      <h2>WINNER!</h2>
+      <h2><%= poke1.name %></h2>
+    <% } else if (poke2.cp > poke1.cp) {%>
+      <h2>WINNER!</h2>
+      <h2><%= poke2.name %></h2>
     <% } %>
   <% } %>
 </div>
@@ -59,9 +61,9 @@
   var battle = $('#battle');
   var preBattle = $('#pre-battle');
   var postBattle = $('#post-battle');
-  var button = $('#reset');
+  var reset = $('#reset');
   $(postBattle).hide();
-  $(button).on('click',function(){
+  $(reset).on('click',function(){
     window.location.href = '/gym/clear';
   });
   $(battle).on('click',function(){
